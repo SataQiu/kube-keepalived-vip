@@ -8,7 +8,7 @@ spec:
   description: Highly available IP addresses and services via kube-keepalived-vip
   parentComponent: true
   provider: ""
-  appVersion: ""
+  appVersion: 1.0.0
   images:
   - registry: ""
     repository: shidaqiu/kube-keepalived-vip
@@ -429,7 +429,7 @@ spec:
         tag: "0.36"
       name: keepalived
       resources: {}
-      useUnicast: false
+      useUnicast: true
       vrid: 179
     nameOverride: ""
     nodeAffinity:

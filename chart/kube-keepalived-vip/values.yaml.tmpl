@@ -11,7 +11,7 @@ keepalived:
     127.0.0.1: default/kubernetes
 
   # Unicast uses the IP of the nodes instead of multicast. This is useful if running in cloud providers (like AWS).
-  useUnicast: false
+  useUnicast: true
 
   # VRRP virtual router ID, must be unique on a particular network segment (0-255)
   vrid: 179
