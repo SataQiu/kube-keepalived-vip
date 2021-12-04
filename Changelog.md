@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.36
+- Use my own image and code registry
+- Do not reset ipvs forcely
+
 ## 0.35
 
 - Update keepalived to v2.0.16

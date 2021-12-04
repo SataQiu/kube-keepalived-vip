@@ -1,13 +1,13 @@
 all: push
 
 # 0.0 shouldn't clobber any release builds
-TAG = 0.35
+TAG = 0.36
 HAPROXY_TAG = 0.1
 # Helm uses SemVer2 versioning
 CHART_VERSION = 1.0.0
-PREFIX = aledbf/kube-keepalived-vip
+PREFIX = shidaqiu/kube-keepalived-vip
 BUILD_IMAGE = build-keepalived
-PKG = github.com/aledbf/kube-keepalived-vip
+PKG = github.com/SataQiu/kube-keepalived-vip
 
 GO_LIST_FILES=$(shell go list ${PKG}/... | grep -v vendor)
 

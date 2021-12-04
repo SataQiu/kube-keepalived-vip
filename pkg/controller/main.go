@@ -46,9 +46,9 @@ import (
 	utiliptables "k8s.io/kubernetes/pkg/util/iptables"
 	utilexec "k8s.io/utils/exec"
 
-	"github.com/aledbf/kube-keepalived-vip/pkg/k8s"
-	"github.com/aledbf/kube-keepalived-vip/pkg/store"
-	"github.com/aledbf/kube-keepalived-vip/pkg/task"
+	"github.com/SataQiu/kube-keepalived-vip/pkg/k8s"
+	"github.com/SataQiu/kube-keepalived-vip/pkg/store"
+	"github.com/SataQiu/kube-keepalived-vip/pkg/task"
 )
 
 const (
@@ -402,7 +402,7 @@ func NewIPVSController(kubeClient *kubernetes.Clientset, namespace string, useUn
 		ipt:         iptInterface,
 		vrid:        vrid,
 		proxyMode:   proxyMode,
-		notify:     notify,
+		notify:      notify,
 		releaseVips: releaseVips,
 	}
 

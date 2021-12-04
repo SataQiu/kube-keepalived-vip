@@ -18,7 +18,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -33,7 +32,7 @@ import (
 	"k8s.io/kubernetes/pkg/util/sysctl"
 	k8sexec "k8s.io/utils/exec"
 
-	"github.com/aledbf/kube-keepalived-vip/pkg/controller"
+	"github.com/SataQiu/kube-keepalived-vip/pkg/controller"
 )
 
 var (
@@ -245,10 +244,10 @@ func changeSysctl() error {
 
 func resetIPVS() error {
 	glog.Info("cleaning ipvs configuration")
-	_, err := k8sexec.New().Command("ipvsadm", "-C").CombinedOutput()
-	if err != nil {
-		return fmt.Errorf("error removing ipvs configuration: %v", err)
-	}
+	// _, err := k8sexec.New().Command("ipvsadm", "-C").CombinedOutput()
+	// if err != nil {
+	// 	return fmt.Errorf("error removing ipvs configuration: %v", err)
+	// }
 
 	return nil
 }

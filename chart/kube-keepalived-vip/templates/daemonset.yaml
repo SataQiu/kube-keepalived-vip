@@ -37,10 +37,14 @@ spec:
 {{ toYaml .Values.podLabels | indent 8}}
         {{- end }}
     spec:
+{{- with .Values.nodeAffinity }}
+      affinity:
+        nodeAffinity:
+{{ toYaml . | indent 10 }}
+{{- end }}
       hostNetwork: true
       serviceAccountName: {{ if .Values.rbac.create }}{{ template "kube-keepalived-vip.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
       containers:
-
         - name: {{ template "kube-keepalived-vip.name" . }}-{{ .Values.keepalived.name }}
           image: "{{ .Values.keepalived.image.repository }}:{{ .Values.keepalived.image.tag }}"
           imagePullPolicy: "{{ .Values.keepalived.image.pullPolicy }}"
@@ -114,7 +118,6 @@ spec:
 {{ toYaml .Values.haproxy.resources | indent 12 }}
         {{- end }}
 {{- end }}
-
       volumes:
         - name: modules
           hostPath:
@@ -134,7 +137,6 @@ spec:
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
     {{- end }}
-
       serviceAccountName: {{ if .Values.rbac.create }}{{ template "kube-keepalived-vip.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
       terminationGracePeriodSeconds: 60
 {{- if .Values.updateStrategy }}

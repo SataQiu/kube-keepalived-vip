@@ -1,7 +1,7 @@
 keepalived:
   name: keepalived
   image:
-    repository: aledbf/kube-keepalived-vip
+    repository: shidaqiu/kube-keepalived-vip
     tag: "%%TAG%%"
     pullPolicy: IfNotPresent
 
@@ -23,7 +23,7 @@ haproxy:
 
   name: haproxy
   image:
-    repository: aledbf/haproxy-self-reload
+    repository: shidaqiu/haproxy-self-reload
     tag: "%%HAPROXY_TAG%%"
     pullPolicy: IfNotPresent
 
@@ -50,7 +50,16 @@ updateStrategy: {}
 podLabels: {}
 
 # Tolerations
-tolerations: []
+tolerations: 
+  - operator: Exists
+
+# Node Affinity
+nodeAffinity:
+  requiredDuringSchedulingIgnoredDuringExecution:
+    nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-role.kubernetes.io/master
+          operator: Exists
 
 # Node selector
 nodeSelector: {}

@@ -1,8 +1,11 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: kube-keepalived-vip
 spec:
+  selector:
+    matchLabels:
+      name: kube-keepalived-vip
   template:
     metadata:
       labels:
@@ -10,7 +13,7 @@ spec:
     spec:
       hostNetwork: true
       containers:
-        - image: aledbf/haproxy-self-reload:0.1
+        - image: shidaqiu/haproxy-self-reload:0.1
           name: haproxy-self-reload
           livenessProbe:
             httpGet:
@@ -22,7 +25,7 @@ spec:
           volumeMounts:
             - name: haproxy
               mountPath: /etc/haproxy
-        - image: aledbf/kube-keepalived-vip:0.35
+        - image: shidaqiu/kube-keepalived-vip:0.36
           name: kube-keepalived-vip
           livenessProbe:
             httpGet:

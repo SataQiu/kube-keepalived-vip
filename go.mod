@@ -1,4 +1,4 @@
-module github.com/aledbf/kube-keepalived-vip
+module github.com/SataQiu/kube-keepalived-vip
 
 go 1.12
 
