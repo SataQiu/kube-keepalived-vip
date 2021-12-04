@@ -421,7 +421,8 @@ spec:
       resources: {}
     httpPort: 8080
     keepalived:
-      config: {}
+      config:
+        127.0.0.1: default/kubernetes
       image:
         pullPolicy: IfNotPresent
         repository: shidaqiu/kube-keepalived-vip

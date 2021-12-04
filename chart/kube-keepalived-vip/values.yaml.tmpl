@@ -6,7 +6,9 @@ keepalived:
     pullPolicy: IfNotPresent
 
   # Content of the configuration ConfigMap supplied to kube-keepalive-vip
-  config: {}
+  # Note: Please change 127.0.0.1 to the VIP address
+  config: 
+    127.0.0.1: default/kubernetes
 
   # Unicast uses the IP of the nodes instead of multicast. This is useful if running in cloud providers (like AWS).
   useUnicast: false
